@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Dogysino</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    
+  <video autoplay muted loop id="myVideo">
+    <source src="./Diamonds-falling.mp4" type="video/mp4">
+  </video>
+
+
+
+  <div class="box" style="overflow:auto; max-height: 100%;">
+
+    <h1>The Dogysino</h1><br><br>
+    <h3>Your Wallet Amount</h3>
+        <p id="cash">Your wallet: 0$</p> <br>
+        <h3>Total Amount spent</h3>
+    <p id="bet-amount">You have spent 0$</p> <br>
+
+
+    <h1>Horse Racing Sector</h1>
+    <h3>Win / Lose</h3>
+    <p id="win-lose">You havent played any games yet (give me money)</p>
+    
+
+    <input type="button" title="Confirm" class="button"value="Confirm" id="" onclick="test()">
+  
+
+    <input id="input-text"type="text" maxlength="1" class="input"placeholder="Pick a horse (1-6)">
+    <input type="text" class="input"name="bet-amnt" placeholder="Bet Amount (max 999)" maxlength="3" id="bet-text">
+    <br><br> <br>
+
+    <h2>Add money here</h2>
+
+    <input type="text" class="input"name="" placeholder="Giftcard code"id="add_funds">
+    <input type="button" class="button" value="Send code" onclick="Giftcard_purchase()">
+
+    <br><br>
+    <h2>Login and Save data here</h2>
+    <p>If you dont have a account yet, Just fill in a username and click save data</p>
+    <input class="input" type="text" id="username" placeholder="username">
+    <input class="button" type="button" value="Save Data" onclick="SaveData()">
+    <input class="button"type="button" value="Load Data" onclick="LoadData()">
+    <br><br><br><br><br><br><br>
+
+  </div>
+
+
+
+
+
+
+
+    <script src="./index.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+<script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+        apiKey: "AIzaSyCStvbe1AsbIQ-YkZCGnJNNW8nYc4FvG7Q",
+          authDomain: "da-casino.firebaseapp.com",
+          projectId: "da-casino",
+          storageBucket: "da-casino.appspot.com",
+          messagingSenderId: "800717227760",
+          appId: "1:800717227760:web:3a9cd9e076135fb3be6435"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+  </script>
+<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+
+</body>
+</html>

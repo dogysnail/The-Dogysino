@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Page</title>
+</head>
+<body>
+
+
+    <div id="log_in">
+        <a href="./index.html">Go back</a>
+        <br>
+        <input type="text" id="username_input" placeholder="Username">
+        <input type="text" id="password_input" placeholder="Password">
+        <input type="button" onclick="login()" value="Confirm">
+
+    </div>
+
+    <div id="home_div">
+        <h1>Admin page</h1> <a href="./index.html">or go back</a>
+        <br><br><br>
+        <p>Create a Giftcard</p>
+        <br>
+        <input type="number" placeholder="Giftcard Value" id="gc_value_input">
+        <input type="number" placeholder="Giftcard ID (7 digits)" id="gc_id_input">
+        <input type="button" value="Create" onclick="createGc()">
+        <br><br><br>
+        <p>Edit a user account</p>
+        <br>
+        <input type="text" placeholder="Account name" id="username">
+        <input type="number" placeholder= "New cash Amount" id="cash_amnt">
+        <input type="number" placeholder="New total bet" id="total_bet">
+        <input type="button" onclick="SaveData()" value="Confirm">
+        <input type="button" onclick="DeleteAcc()" value="Delete Account">
+
+
+    </div>
+    
+
+    <script src="./admin.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyCStvbe1AsbIQ-YkZCGnJNNW8nYc4FvG7Q",
+              authDomain: "da-casino.firebaseapp.com",
+              projectId: "da-casino",
+              storageBucket: "da-casino.appspot.com",
+              messagingSenderId: "800717227760",
+              appId: "1:800717227760:web:3a9cd9e076135fb3be6435"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    
+      </script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+    
+</body>
+</html>
