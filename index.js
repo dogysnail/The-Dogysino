@@ -10,6 +10,9 @@ var warning = 0
 
  var cash_amnt = 0
 
+ document.cookie1 = cash_amnt
+
+ 
 
 
 
@@ -136,7 +139,7 @@ function test() {
 
 var giftcard_boolean = false
 
-
+var testing = document.cookie1
 
 function checkGiftcard(GCnumber){
 
@@ -176,10 +179,21 @@ function checkGiftcard(GCnumber){
 
 function test2(){
 
+    document.cookie1 = cash_amnt
+    console.log(cash_amnt)
+
+    console.log(document.cookie1)
+ 
     
-    console.log(giftcard_boolean)
-    checkGiftcard(12345)
+}
+
+function test3(){
+
     
+
+    cash_amnt = cash_amnt + testing
+    cash.innerHTML = "Your wallet: " + cash_amnt + "$"
+    console.log(testing)
 }
 
 function giftcard_updater(){

@@ -8,15 +8,21 @@ function login(){
 
     console.log("test")
 
-  if (username_text == "dogysnail" && password_text == "dogy-snail"){
-      login_div.style.display == "none"
-      home_div.style.display == "block"
-  }
-    
-  else {
-      alert("cringe")
-  }
 
+    if (username_text == "dogysnail" && password_text == "dogy_snail") {
+        console.log("crigne")
+        document.getElementById("log_in").style.display = "none"
+        document.getElementById("home_div").style.display = "block"
+    }
+
+    else if (username_text == "dogysnail" && password_text == "chungus") {
+        alert("fuck off retard trying to log in")
+    }
+
+    else {
+        alert("wrong info")
+    }
+}
 
 
 function createGc(){
