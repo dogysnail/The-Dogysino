@@ -7,7 +7,7 @@
     <title>The Dogysino</title>
     <link rel="stylesheet" href="./styles.css">
 </head>
-<body>
+<body onload="loadCookies()">
     
   <video autoplay muted loop id="myVideo">
     <source src="./Diamonds-falling.mp4" type="video/mp4">
@@ -19,7 +19,11 @@
 
   <div class="box" style="overflow:auto; max-height: 100%;">
 
-    <h1>The Dogysino</h1><br><br>
+    <h1>The Dogysino</h1><br>
+    <h5>Now we save your cash in cookies! (so u dont have to save no more)</h5>
+    <h5>Make sure to create a account before redeeming a Giftcard as it resets your money</h5>
+    <br><br>
+    
     <h3>Your Wallet Amount</h3>
         <p id="cash">Your wallet: 0$</p> <br>
         <h3>Total Amount spent</h3>
@@ -38,8 +42,7 @@
     <input type="text" class="input"name="bet-amnt" placeholder="Bet Amount (max 999)" maxlength="3" id="bet-text">
     <br><br> <br>
 
-    <input type="button" value="test2" onclick="test2()">
-    <input type="button" value="test3" onclick="test3()">
+
     <h2>Add money here</h2>
 
     <input type="text" class="input"name="" placeholder="Giftcard code"id="add_funds">
@@ -47,8 +50,10 @@
 
     <br><br>
     <h2>Login and Save data here</h2>
+    <h3>Useful if you want to migrate your data to another device</h3>
     <p>If you dont have a account yet, Just fill in a username and click save data</p>
     <input class="input" type="text" id="username" placeholder="username">
+    <input type="password" class="input" id="pass_input" placeholder="Password">
     <input class="button" type="button" value="Save Data" onclick="SaveData()">
     <input class="button"type="button" value="Load Data" onclick="LoadData()">
     <br><br><br><br><br><br><br>
