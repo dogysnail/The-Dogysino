@@ -37,19 +37,18 @@
 
 
     <h1>Horse Racing Sector</h1>
-    <h3>Win / Lose</h3>
-    <p id="win-lose">You havent played any games yet (give me money)</p>
 
 
 
-    <img src="./Horse-Track.jpg" style="position: absolute; max-width: 80%; z-index: 1; left: 130px;" alt="">
+
+    <img src="./Horse-Track.jpg" style="position: static; max-width: 80%; z-index: 1; left: 130px;" alt="">
 <br>
-    <img src="./Blue-Horse.png" style="position: absolute; width: 80px; left: 178px; z-index: 2;" id="Blue_horse" alt=""> <br><br><br><br>
-    <img src="./Pink-horse.png" style="position: absolute; width: 80px; left: 178px; z-index: 2;" id="Pink_horse" alt=""> <br><br><br><br><br>
-    <img src="./Green-horse.png" style="position: absolute; width: 80px; left: 178px;z-index: 2;" id="Green_horse" alt=""> <br><br><br><br>
-    <img src="./Teal-horse.png" style="position: absolute; width: 80px; left: 178px;z-index: 2;" id="Teal_horse" alt=""> <br><br><br><br><br>
-    <img src="./Yellow-horse.png" style="position: absolute; width: 80px; left: 178px;z-index: 2;" id="Yellow_horse" alt=""> <br><br><br><br>
-    <img src="./Red-horse.png" style="position: absolute; width: 80px; left: 178px;z-index: 2;" id="Red_horse" alt=""> <br><br><br><br><br>
+    <img src="./Blue-Horse.png" style="position: absolute; width: 80px; left: 178px; z-index: 2; top: 620px;" class="horse1"id="Blue_horse" alt=""> 
+    <img src="./Pink-horse.png" style="position: absolute; width: 80px; left: 178px; z-index: 2; top: 700px;" class="horse2"id="Pink_horse" alt=""> 
+    <img src="./Green-horse.png" style="position: absolute; width: 80px; left: 178px;z-index: 2; top: 770px;" class="horse3" id="Green_horse" alt=""> 
+    <img src="./Teal-horse.png" style="position: absolute; width: 80px; left: 178px;z-index: 2; top: 850px;" class="horse4" id="Teal_horse" alt=""> 
+    <img src="./Yellow-horse.png" style="position: absolute; width: 80px; left: 178px;z-index:2; top: 930px;" class="horse5" id="Yellow_horse" alt=""> 
+    <img src="./Red-horse.png" style="position: absolute; width: 80px; left: 178px;z-index: 2; top: 1010px;" class="horse6" id="Red_horse" alt=""> 
 
     
 
@@ -58,10 +57,16 @@
 
     <input id="input-text"type="text" maxlength="1" class="input"placeholder="Pick a horse (1-6)">
     <input type="text" class="input"name="bet-amnt" placeholder="Bet Amount (max 999)" maxlength="3" id="bet-text">
-    <br> <p id="horse_text">You havent played yet</p>
+    <br> 
+    <h3>Win / Lose</h3>
+    <p id="win-lose">You havent played any games yet (give me money)</p><br>
+    <p id="horse_text"></p>
+    <p id="horse_bet_text"></p>
     <br> <br>
 
-    <div id="Account_Menu" class="">
+
+    <p>Click the Eye to hide or unhide the Money Menu</p>
+    <div id="Account_Menu" style="display: none;">
       <h2>Add money here</h2>
 
       <input type="text" class="input"name="" placeholder="Giftcard code"id="add_funds">
@@ -78,9 +83,18 @@
 
 
     </div>
-    <input type="button" onclick="collapse('Account_Menu', 'none')" value="cringe">
-    <input type="button" onclick="collapse('Account_Menu', 'block')" value="unhide da cringe">
-    <input type="button" onclick="deleteCookies()" value="delete da cookie">
+
+
+    <a id="uncollapseIt" style="cursor: pointer;" onclick="collapse('Account_Menu', 'block'), collapse('uncollapseIt', 'none'), collapse('collapseIt', 'block')">
+      <img src="./outline_visibility_black_24dp.png" alt="Unhide Account Menu">
+    </a>
+    <a id="collapseIt" style="display: none; cursor: pointer;" onclick="collapse('Account_Menu', 'none'), collapse('collapseIt', 'none'), collapse('uncollapseIt', 'block')">
+      <img  src="./outline_visibility_black_24dp.png" alt="Hide Account Menu">
+    </a>
+
+   
+
+
 
 
     <br><br><br><br><br><br><br>

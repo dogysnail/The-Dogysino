@@ -165,10 +165,13 @@ function test() {
     var bet = document.getElementById("bet-text").value
     var winnings = bet *2.5
     var horse_text = document.getElementById("horse_text")
+    var horse_bet_text = document.getElementById("horse_bet_text")
 
     if (Math.sign(cash_amnt) == 1 && cash_amnt >= bet && Math.sign(bet) == 1){
 
         console.log("user has bet: " + bet)
+
+        horse_bet_text.innerHTML = "You have bet on horse number: " + horse
 
 
 
@@ -320,6 +323,12 @@ function test() {
     
 }
 
+
+function unhide(id, hide){
+    var element = document.getElementById(id)
+
+    element.style.display = hide
+}
 
 function dotdotdot(){
     
