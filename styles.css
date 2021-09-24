@@ -25,10 +25,27 @@ body {
     transform: translate(-50%, 0);
      width: 70%;
     padding: 30px;
+    border-radius: 20px;
     
     
-    background: rgba(233, 252, 255, 0.9);
+    background: rgba(209, 247, 253, 0.9);
     text-align: center; 
+    
+    
+}
+
+
+.box2 {
+
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 0);
+     width: 70%;
+    padding: 30px;
+    
+    
+    background: rgba(33, 209, 10, 0.9);
+    text-align: left;
     
     
 }

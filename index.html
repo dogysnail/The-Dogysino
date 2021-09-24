@@ -16,10 +16,16 @@
 <div>
   <code id="cookies"></code>
 </div>
-
+<br>
   <div class="box" style="overflow:auto; max-height: 100%;">
 
-    <h1>The Dogysino</h1><br>
+
+
+
+
+
+    <img src="./Dogysino.png" style="width: 500px;" alt="bruh">
+
     <h5>Now we save your cash in cookies! (so u dont have to save no more)</h5>
     <h5>Make sure to create a account before redeeming a Giftcard as it resets your money</h5>
     <br><br>
@@ -33,6 +39,18 @@
     <h1>Horse Racing Sector</h1>
     <h3>Win / Lose</h3>
     <p id="win-lose">You havent played any games yet (give me money)</p>
+
+
+
+    <img src="./Horse-Track.jpg" style="position: absolute; max-width: 80%; z-index: 1; left: 130px;" alt="">
+<br>
+    <img src="/Blue-Horse.png" style="position: absolute; width: 80px; left: 178px; z-index: 2;" id="Blue_horse" alt=""> <br><br><br><br>
+    <img src="./Pink-horse.png" style="position: absolute; width: 80px; left: 178px; z-index: 2;" id="Pink_horse" alt=""> <br><br><br><br><br>
+    <img src="./Green-horse.png" style="position: absolute; width: 80px; left: 178px;z-index: 2;" id="Green_horse" alt=""> <br><br><br><br>
+    <img src="./Teal-horse.png" style="position: absolute; width: 80px; left: 178px;z-index: 2;" id="Teal_horse" alt=""> <br><br><br><br><br>
+    <img src="./Yellow-horse.png" style="position: absolute; width: 80px; left: 178px;z-index: 2;" id="Yellow_horse" alt=""> <br><br><br><br>
+    <img src="./Red-horse.png" style="position: absolute; width: 80px; left: 178px;z-index: 2;" id="Red_horse" alt=""> <br><br><br><br><br>
+
     
 
     <input type="button" title="Confirm" class="button"value="Confirm" id="" onclick="test()">
@@ -40,22 +58,31 @@
 
     <input id="input-text"type="text" maxlength="1" class="input"placeholder="Pick a horse (1-6)">
     <input type="text" class="input"name="bet-amnt" placeholder="Bet Amount (max 999)" maxlength="3" id="bet-text">
-    <br><br> <br>
+    <br> <p id="horse_text">You havent played yet</p>
+    <br> <br>
+
+    <div id="Account_Menu" class="">
+      <h2>Add money here</h2>
+
+      <input type="text" class="input"name="" placeholder="Giftcard code"id="add_funds">
+      <input type="button" class="button" value="Send code" onclick="Giftcard_purchase()">
+  
+      <br><br>
+      <h2>Login and Save data here</h2>
+      <h3>Useful if you want to migrate your data to another device</h3>
+      <p>If you dont have a account yet, Just fill in a username and click save data</p>
+      <input class="input" type="text" id="username" placeholder="username">
+      <input type="password" class="input" id="pass_input" placeholder="Password">
+      <input class="button" type="button" value="Save Data" onclick="SaveData()">
+      <input class="button"type="button" value="Load Data" onclick="LoadData()">
 
 
-    <h2>Add money here</h2>
+    </div>
+    <input type="button" onclick="collapse('Account_Menu', 'none')" value="cringe">
+    <input type="button" onclick="collapse('Account_Menu', 'block')" value="unhide da cringe">
+    <input type="button" onclick="deleteCookies()" value="delete da cookie">
 
-    <input type="text" class="input"name="" placeholder="Giftcard code"id="add_funds">
-    <input type="button" class="button" value="Send code" onclick="Giftcard_purchase()">
 
-    <br><br>
-    <h2>Login and Save data here</h2>
-    <h3>Useful if you want to migrate your data to another device</h3>
-    <p>If you dont have a account yet, Just fill in a username and click save data</p>
-    <input class="input" type="text" id="username" placeholder="username">
-    <input type="password" class="input" id="pass_input" placeholder="Password">
-    <input class="button" type="button" value="Save Data" onclick="SaveData()">
-    <input class="button"type="button" value="Load Data" onclick="LoadData()">
     <br><br><br><br><br><br><br>
 
   </div>

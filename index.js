@@ -1,18 +1,117 @@
 
 var giftcard_sent = 0
 var warning = 0
- var times_gambled = 0
-
- var total_bet = 0
- var giftcard_used = false
- var cash_amnt = 0
+var times_gambled = 0
+var password_info = ""
+var userExists = false
+var total_bet = 0
+var giftcard_used = false
+var cash_amnt = 0
 var cookiemonster = document.cookie
+var giftcard_boolean = false
+var testing = document.cookie1
+var giftcard_amount = 0
+var dotdot = "..."
+
+function allHorses(speedBlue, speedGreen, speedPink, speedRed, speedTeal, speedYellow){
+    HorseMovementBlue(speedBlue)
+    HorseMovementGreen(speedGreen)
+    HorseMovementPink(speedPink)
+    HorseMovementRed(speedRed)
+    HorseMovementTeal(speedTeal)
+    HorseMovementYellow(speedYellow)
+}
+
+
+function HorseMovementBlue(speed){
+    var left = 178,
+        horse = document.getElementById('Blue_horse'),
+        timerId = 0;
+    
+    timerId = setInterval( function() { //This function is called by the browser every 33 milliseconds
+        if( left++ > 850 ) {
+            clearInterval( timerId ); //Stop the interval because left is > 200
+        }
+        horse.style.left = left + "px";
+    }, speed );
+}
+
+function HorseMovementRed(speed){
+    var left = 178,
+        horse = document.getElementById('Red_horse'),
+        timerId = 0;
+    
+    timerId = setInterval( function() { //This function is called by the browser every 33 milliseconds
+        if( left++ > 850 ) {
+            clearInterval( timerId ); //Stop the interval because left is > 200
+        }
+        horse.style.left = left + "px";
+    }, speed );
+}
+
+function HorseMovementYellow(speed){
+    var left = 178,
+        horse = document.getElementById('Yellow_horse'),
+        timerId = 0;
+    
+    timerId = setInterval( function() { //This function is called by the browser every 33 milliseconds
+        if( left++ > 850 ) {
+            clearInterval( timerId ); //Stop the interval because left is > 200
+        }
+        horse.style.left = left + "px";
+    }, speed );
+}
+
+function HorseMovementGreen(speed){
+    var left = 178,
+        horse = document.getElementById('Green_horse'),
+        timerId = 0;
+    
+    timerId = setInterval( function() { //This function is called by the browser every 33 milliseconds
+        if( left++ > 850 ) {
+            clearInterval( timerId ); //Stop the interval because left is > 200
+        }
+        horse.style.left = left + "px";
+    }, speed );
+}
+
+function HorseMovementPink(speed){
+    var left = 178,
+        horse = document.getElementById('Pink_horse'),
+        timerId = 0;
+    
+    timerId = setInterval( function() { //This function is called by the browser every 33 milliseconds
+        if( left++ > 850 ) {
+            clearInterval( timerId ); //Stop the interval because left is > 200
+        }
+        horse.style.left = left + "px";
+    }, speed );
+}
+
+function HorseMovementTeal(speed){
+    var left = 178,
+        horse = document.getElementById('Teal_horse'),
+        timerId = 0;
+    
+    timerId = setInterval( function() { //This function is called by the browser every 33 milliseconds
+        if( left++ > 850 ) {
+            clearInterval( timerId ); //Stop the interval because left is > 200
+        }
+        horse.style.left = left + "px";
+    }, speed );
+}
 
 
 
 
 
+function collapse(id, collapse){
+    var menu = document.getElementById(id)
 
+    
+    document.getElementById(id).style.display=collapse
+
+}
 
 function loadCookies(){
 
@@ -35,8 +134,6 @@ function loadCookies(){
     
 }
 
-
-
 function saveCookies(){
     document.cookie = cash_amnt
     
@@ -44,22 +141,19 @@ function saveCookies(){
 
 }
 
-
 function deleteCookies(){
     document.cookie = document.cookie + " ;expires = Thu, 01 Jan 1970 00:00:00 GMT"
     console.log("deleted cookies")
+
+    var black = document.cookie
+
+    console.log(black)
 }
 
- 
-
-
-
-    function clear_tables() {
+function clear_tables() {
         var horse = document.getElementById("input-text").value = ""
         var bet = document.getElementById("bet-text").value = ""
     }
-
-
 
 function test() {
     
@@ -70,6 +164,7 @@ function test() {
     var horse = document.getElementById("input-text").value
     var bet = document.getElementById("bet-text").value
     var winnings = bet *2.5
+    var horse_text = document.getElementById("horse_text")
 
     if (Math.sign(cash_amnt) == 1 && cash_amnt >= bet && Math.sign(bet) == 1){
 
@@ -82,15 +177,66 @@ function test() {
         return Math.floor(Math.random() * (max - min) + min);
           };
         var winner = (generateRandomNumber(1, 6));
+
+        var random1 = generateRandomNumber(11, 15)
+        var random2 = generateRandomNumber(11, 15)
+        var random3 = generateRandomNumber(11, 15)
+        var random4 = generateRandomNumber(11, 15)
+        var random5 = generateRandomNumber(11, 15)
+        
+
+
+        
+        horse_text.innerHTML = "Da horses are running" + dotdot
+        win_lose_text.innerHTML = "Da horses are running" + dotdot
+
+          switch(winner){
+              case 1: 
+              allHorses(10, random1, random2, random3, random4, random5)
+              setTimeout(() => {  horse_text.innerHTML = "Horse number 1 won!" }, 6600);
+              break
+
+              case 2: 
+              allHorses(random1, random2, 10, random3, random4, random5)
+              setTimeout(() => {  horse_text.innerHTML = "Horse number 2 won!" }, 6600);
+              break
+
+              case 3: 
+              allHorses(random1, 10, random2, random3, random4, random5)
+              setTimeout(() => {  horse_text.innerHTML = "Horse number 3 won!" }, 6600);
+              break
+
+              case 4: 
+              allHorses(random1, random2, random3, random4, 10, random5)
+              setTimeout(() => {  horse_text.innerHTML = "Horse number 4 won!" }, 6600);
+              break
+
+              case 5:
+            allHorses(random1, random2, random3, random4, random5, 10)
+            setTimeout(() => {  horse_text.innerHTML = "Horse number 5 won!" }, 6600);
+            break
+
+            case 6: 
+            allHorses(random1, random2, random3, 10, random4, random5)
+            setTimeout(() => {  horse_text.innerHTML = "Horse number 6 won!" }, 6600);
+
+            
+            break
+            
+          }
+
           console.log("the winning number was " + winner)
 
         if (winner == horse){
-        win_lose_text.innerHTML = "You won " + winnings + "$"
+
+        setTimeout(() => {  win_lose_text.innerHTML = "You won " + winnings + "$" }, 6600);
+        
         cash_amnt = cash_amnt + winnings
     
     }
         else {
-        win_lose_text.innerHTML = "You lost " + bet + "$"
+        setTimeout(() => {  win_lose_text.innerHTML = "You lost " + bet + "$" }, 6600);
+        
         cash_amnt = cash_amnt - bet
 
     } 
@@ -175,11 +321,14 @@ function test() {
 }
 
 
-
-
-var giftcard_boolean = false
-
-var testing = document.cookie1
+function dotdotdot(){
+    
+        setTimeout(() => {  dotdot = "." }, 100);
+        setTimeout(() => {  dotdot = ".." }, 100);
+        setTimeout(() => {  dotdot = "..." }, 100);
+        
+    
+}
 
 function checkGiftcard(GCnumber){
 
@@ -260,7 +409,7 @@ db.collection("giftcards").doc(input_Code).set({
 });
 }
 
-var giftcard_amount = 0
+
 
 function Giftcard_purchase(){
 
@@ -325,7 +474,7 @@ function Add_Funds(amnt){
     }
 
 
-    function Add_funds_without_cookies (amnt){
+function Add_funds_without_cookies (amnt){
         cash_amnt = 0
         
         cash.innerHTML = "Your wallet: " + 0 + "$"
@@ -465,8 +614,7 @@ function LoadData(){
 
 }
 
-var password_info = ""
-var userExists = false
+
 
 function checkPassData(){
 
