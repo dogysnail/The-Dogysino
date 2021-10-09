@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Dogysino</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body onload="loadCookies()">
+    
+  <video autoplay muted loop id="myVideo">
+    <source src="./Diamonds-falling.mp4" type="video/mp4">
+  </video>
+
+<div>
+  <code id="cookies"></code>
+</div>
+<br>
+  <div class="box" style="overflow:auto; max-height: 100%;">
+
+
+
+
+
+
+    <img src="./Dogysino.png" style="width: 500px;" alt="bruh">
+
+    <h5>Now we save your cash in cookies! (so u dont have to save no more)</h5>
+    <h5>Make sure to create a account before redeeming a Giftcard as it resets your money</h5>
+    <br><br>
+    
+    <h3>Your Wallet Amount</h3>
+        <p id="cash">Your wallet: 0$</p> <br>
+        <h3>Total Amount spent</h3>
+    <p id="bet-amount">You have spent 0$</p> <br>
+
+
+
+
+
+
+
+    <h1>Multiplayer Horse Racing</h1>
+
+    <div>
+      <img src="./Horse-Track.jpg" style="position: static; max-width: 80%; z-index: 1; left: 130px;" alt="">
+      <br>
+          <img src="./Blue-Horse.png" style="position: absolute; width: 80px; left: 178px; z-index: 2; top: 620px;" class="horse1"id="Blue_horse" alt=""> 
+          <img src="./Pink-horse.png" style="position: absolute; width: 80px; left: 178px; z-index: 2; top: 700px;" class="horse2"id="Pink_horse" alt=""> 
+          <img src="./Green-horse.png" style="position: absolute; width: 80px; left: 178px;z-index: 2; top: 770px;" class="horse3" id="Green_horse" alt=""> 
+          <img src="./Teal-horse.png" style="position: absolute; width: 80px; left: 178px;z-index: 2; top: 850px;" class="horse4" id="Teal_horse" alt=""> 
+          <img src="./Yellow-horse.png" style="position: absolute; width: 80px; left: 178px;z-index:2; top: 930px;" class="horse5" id="Yellow_horse" alt=""> 
+          <img src="./Red-horse.png" style="position: absolute; width: 80px; left: 178px;z-index: 2; top: 1010px;" class="horse6" id="Red_horse" alt=""> 
+      
+          
+
+        
+      
+         
+          <br> 
+      
+      
+          <h3>Win / Lose</h3>
+          <p id="win-lose">You havent played any games yet (give me money)</p><br>
+          <p id="horse_text"></p>
+          <p id="horse_bet_text"></p>
+         
+    </div>
+
+
+   
+    <div class="Create Lobby" id="CreateDiv">
+
+        <p>Create a Lobby</p>
+
+        <input type="text" placeholder="Lobby Name" id="LobbyName" class="input">
+        <input type="password" placeholder="Lobby Password" id="LobbyPassword" class="input">
+        <input type="text" placeholder="Your Username" id="LobbyUsername" class="input">
+
+        <input type="number" maxlength="3" placeholder="Your Bet" id="user1Bet" class="input">
+        <br><br>
+        <input type="button" value="Create Lobby" onclick="createLobby()" class="button">
+<br><br><br><br><br><br><br><br>
+    </div>
+
+    <div class="Join Lobby" id="joinDiv">
+
+        <p>Join a Lobby</p>
+
+        <input type="text" placeholder="Lobby Name" id="LobbyNameJoin" class="input">
+        <input type="password" placeholder="Lobby Password" id="LobbyPasswordJoin" class="input">
+        <input type="text" placeholder="Your Username" id="LobbyOpponentJoin" class="input">
+<br><br>
+        <input type="button" value="Join Lobby" onclick="getLobbyData()" class="button">
+
+        <br> <input type="button" value="i have constipation" onclick="startGame()">
+        <br><br><br><br><br><br>
+    </div>
+
+    <div class="Host div" id="hostDiv" style="display: none;" >
+
+      <h2>You are hosting a game</h2>
+
+      <input type="button" class="button" value="Start The Game" onclick="startMultiGame()"><br>
+      <input type="button" class="button"value="Exit the Lobby" onclick="reload()">
+      <p id="JoinedPlayer" >No player has joined yet</p>
+      <br><br><br><br><br><br><br><br>
+    </div>
+
+    </div>
+
+
+    <br><br><br><br><br><br><br><br><br><br><br>
+
+  </div>
+
+
+
+
+
+
+
+    <script src="./multiplayer.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+<script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+        apiKey: "AIzaSyCStvbe1AsbIQ-YkZCGnJNNW8nYc4FvG7Q",
+          authDomain: "da-casino.firebaseapp.com",
+          projectId: "da-casino",
+          storageBucket: "da-casino.appspot.com",
+          messagingSenderId: "800717227760",
+          appId: "1:800717227760:web:3a9cd9e076135fb3be6435"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+  </script>
+<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+
+</body>
+</html>

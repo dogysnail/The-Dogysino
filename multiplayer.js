@@ -12,7 +12,12 @@ var giftcard_boolean = false
 var testing = document.cookie1
 var giftcard_amount = 0
 var dotdot = "..."
-
+var lobbyPassword = ""
+var lobbyOpponent = ""
+var lobbyName = ""
+var lobbyUsername = ""
+var bet = 0
+var horse = 0
 
 function allHorses(speedBlue, speedGreen, speedPink, speedRed, speedTeal, speedYellow){
     HorseMovementBlue(speedBlue)
@@ -22,7 +27,6 @@ function allHorses(speedBlue, speedGreen, speedPink, speedRed, speedTeal, speedY
     HorseMovementTeal(speedTeal)
     HorseMovementYellow(speedYellow)
 }
-
 
 function HorseMovementBlue(speed){
     var left = 178,
@@ -102,10 +106,6 @@ function HorseMovementTeal(speed){
     }, speed );
 }
 
-
-
-
-
 function collapse(id, collapse){
     var menu = document.getElementById(id)
 
@@ -140,6 +140,8 @@ function saveCookies(){
     
     console.log("saved cookies")
 
+    
+
 }
 
 function deleteCookies(){
@@ -162,11 +164,18 @@ function test() {
     var cash = document.getElementById("cash")
     var win_lose_text = document.getElementById("win-lose")
     var bet_text = document.getElementById("bet-amount")
-    var horse = document.getElementById("input-text").value
-    var bet = document.getElementById("bet-text").value
+
+    
+   
     var winnings = bet *2.5
     var horse_text = document.getElementById("horse_text")
     var horse_bet_text = document.getElementById("horse_bet_text")
+
+
+    bet = parseInt(bet)
+
+
+    alert(bet)
 
     if (Math.sign(cash_amnt) == 1 && cash_amnt >= bet && Math.sign(bet) == 1){
 
@@ -264,7 +273,11 @@ function test() {
     saveCookies()
 
 
+
+
     bet_text.innerHTML = "You spent " + total_bet + "$" 
+
+    
 
    if (times_gambled == 10){
     var play_again = prompt("You have played over 10 times and it seems a bit much, Are you sure you wanna play more? (Yes / No) Leaving no answer will reset your tables", "No")
@@ -325,16 +338,6 @@ function test() {
 }
 
 
-
-
-function dotdotdot(){
-    
-        setTimeout(() => {  dotdot = "." }, 100);
-        setTimeout(() => {  dotdot = ".." }, 100);
-        setTimeout(() => {  dotdot = "..." }, 100);
-        
-    
-}
 
 function checkGiftcard(GCnumber){
 
@@ -415,8 +418,6 @@ db.collection("giftcards").doc(input_Code).set({
 });
 }
 
-
-
 function Giftcard_purchase(){
 
     var giftcard_code = ""
@@ -463,9 +464,6 @@ function Giftcard_purchase(){
             
 } 
 
-
-
-
 function Add_Funds(amnt){
 
    
@@ -478,7 +476,6 @@ function Add_Funds(amnt){
         console.log("added " + cash_amnt + " funds")
         saveCookies()
     }
-
 
 function Add_funds_without_cookies (amnt){
         cash_amnt = 0
@@ -568,8 +565,6 @@ function SaveData(){
 
 }
 
-
-
 function LoadData(){
 
 
@@ -619,8 +614,6 @@ function LoadData(){
    
 
 }
-
-
 
 function checkPassData(){
 
@@ -684,12 +677,59 @@ function checkUser(){
 
 
 
+var user1Bet = 0
+
 function createLobby(){
     var lobbyPassword = document.getElementById("LobbyPassword").value
-    var lobbyOpponent = document.getElementById("LobbyOpponent").value
+    
     var db = firebase.firestore();
     var lobbyName = document.getElementById("LobbyName").value
     var lobbyUsername = document.getElementById("LobbyUsername").value
+    user1Bet = document.getElementById("user1Bet").value
+    console.log(lobbyOpponent + " " + lobbyPassword)
+
+    user1Bet = parseInt(user1Bet)
+
+
+
+
+        db.collection("lobby").doc(lobbyName).set({
+    
+            open: true,
+            password: lobbyPassword,
+            total_bet: user1Bet,
+            user1: lobbyUsername,
+            user2: "",
+            winning_horse: 0,
+            user1Bet: user1Bet,
+            started: true
+
+
+       
+        })
+        .then(() => {
+            alert("New Lobby created with the following credentials: " + "\r\n" + "Lobby Name: " + lobbyName + "\r\n" + "Lobby Password: " + lobbyPassword + "\r\n" + "Please make sure to join the lobby again below");
+
+            Add_Funds(user1Bet - user1Bet *2)
+            
+
+        })
+        .catch((error) => {
+            alert("Error Saving Data: ", error);
+        });
+    
+}
+
+var tempLobbyPass = ""
+var usedLobbyVar = false
+var tempUser = ""
+
+function user2Join(){
+    var db = firebase.firestore();
+    var lobbyName = document.getElementById("LobbyName").value
+    var lobbyUsername = document.getElementById("LobbyUsername").value
+    var LobbyOpponentJoin = document.getElementById("LobbyOpponentJoin").value
+    user1Bet = document.getElementById("user1Bet").value
     console.log(lobbyOpponent + " " + lobbyPassword)
 
 
@@ -699,19 +739,22 @@ function createLobby(){
     
             open: true,
             password: lobbyPassword,
-            total_bet: 0,
+            total_bet: user1Bet,
             user1: lobbyUsername,
-            user2: lobbyOpponent,
-            winning_horse: 0
+            user2: LobbyOpponentJoin,
+            winning_horse: 0,
+            user1Bet: user1Bet,
+            started: true
 
 
        
         })
         .then(() => {
-            alert("New Lobby created with the following credentials: " + "\r\n" + "Lobby Name: " + lobbyName + "\r\n" + "Lobby Password: " + lobbyPassword);
+            alert("New Lobby created with the following credentials: " + "\r\n" + "Lobby Name: " + lobbyName + "\r\n" + "Lobby Password: " + lobbyPassword + "\r\n" + "Please make sure to join the lobby again below");
 
+            Add_Funds(user1Bet - user1Bet *2)
             
-            //saveCookies()
+
         })
         .catch((error) => {
             alert("Error Saving Data: ", error);
@@ -719,30 +762,88 @@ function createLobby(){
     
 }
 
+var imGonnaCry = ""
+
 function getLobbyData(){
-    var lobbyPassword = document.getElementById("LobbyPasswordJoin").value
-    var lobbyOpponent = document.getElementById("LobbyOpponentJoin").value
+    lobbyPassword = document.getElementById("LobbyPasswordJoin").value
+    lobbyOpponent = document.getElementById("LobbyOpponentJoin").value
     var db = firebase.firestore();
-    var lobbyName = document.getElementById("LobbyNameJoin").value
-    var lobbyUsername = document.getElementById("LobbyUsernameJoin").value
-    var docRef = db.collection("lobby").doc(lobbyUsername);
+    lobbyName = document.getElementById("LobbyNameJoin").value
+    lobbyUsername = document.getElementById("LobbyNameJoin").value
+    docRef = db.collection("lobby").doc(lobbyUsername);
 
 
     docRef.get().then((doc) => {
         if (doc.exists) {
             
-            lobbyPassword = doc.data().password
-            
-            
-           
 
+            imGonnaCry = doc.data().user1
+            console.log(doc.data().user1 + "ibg4r")
+
+            tempUser = doc.data().user1
+            tempLobbyPass = doc.data().password
+            usedLobbyVar = doc.data().open
+            console.log(usedLobbyVar)
+
+            console.log("first "+lobbyOpponent)
+
+            if (tempLobbyPass == lobbyPassword && usedLobbyVar == true ){
+
+
+                var cringePonent = doc.data().user2
+                console.log(cringePonent)
+
+
+                console.log("The tempuser is " + tempUser + " and the lobby opponent is " + lobbyOpponent)
+
+                if (tempUser == lobbyOpponent){
+
+
+                    alert("Joined the lobby!" + "\r\n" + "Please wait for another player to join the lobby before starting")
+                    checkJoin()
+
+                    
+
+
+
+                }
+
+                else {
+
+                    
+                    user1Bet = doc.data().user1Bet
+                    alert("Joined Lobby! " + "\r\n" + "\r\n" + "Please wait for the host to start the game")
+                    bet = bet + user1Bet
+                    bet = parseInt(bet)
+                    console.log(bet)
+
+
+
+
+
+
+                    lobbyUpdate()
+                }
             
+            
+
+            }
+
+
+            else if (usedLobbyVar == false) {
+                alert("This is a invalid Lobby")
+            }
+
+            else{
+                alert("Wrong Password")
+            }
+
         }
         
         
         else {
             // doc.data() will be undefined in this case
-            alert("This user doesnt exist");
+            alert("This lobby doesnt exist");
             console.log(doc.data())
         }
 
@@ -753,7 +854,147 @@ function getLobbyData(){
     });
 }
 
-
 function startMultiGame(){
 
+console.log(imGonnaCry)
+var LobbyHost = document.getElementById("LobbyOpponentJoin").value
+
+
+    if (lobbyPassword == tempLobbyPass && usedLobbyVar == true){
+
+        console.log(imGonnaCry + " and " + LobbyHost)
+
+        if (imGonnaCry == LobbyHost) {
+            horse = prompt("Which horse would you like to bet on", "1-6")
+            horse = parseInt(horse)
+    
+            alert(user1Bet)
+
+            bet = bet + user1Bet
+
+
+            test()
+            usedLobby(lobbyName)
+    
+        }
+
+        else{
+            var user2Bet = prompt ("Please enter your bet", "(Max of 999)")
+        horse = prompt("Which horse would you like to bet on", "1-6")
+        user2Bet = parseInt(user2Bet)
+        horse = parseInt(horse)
+
+        bet = bet + user2Bet
+        
+        test()
+        usedLobby(lobbyName)
+        }
+
+
+
+        
+
+
+    }
+
+    else {
+        alert("join / make a lobby first")
+    }
+
+}
+
+var started = true
+
+
+function lobbyUpdate(){
+
+    var db = firebase.firestore();
+    
+    // [START listen_document]
+    db.collection("lobby").doc(lobbyName)
+        .onSnapshot((doc) => {
+            
+            
+            console.log(doc.data().started)
+            var ItsMonkey = doc.data().started
+            started = ItsMonkey
+
+
+            if (started == false){
+                startMultiGame()
+            }
+            
+            
+
+        });
+    // [END listen_document]
+
+
+    console.log(started)
+
+
+}
+
+
+function checkJoin(){
+    var db = firebase.firestore();
+    
+    // [START listen_document]
+    db.collection("lobby").doc(lobbyName)
+        .onSnapshot((doc) => {
+            
+            
+            console.log(doc.data().user2)
+            var ItsMonkey = doc.data().user2
+            lobbyOpponent = ItsMonkey
+
+
+            if (lobbyOpponent != ""){
+                console.log(lobbyOpponent)
+                console.log(lobbyOpponent + " has joined your lobby")
+
+                collapse("hostDiv", "block")
+                collapse("joinDiv", "none")
+                collapse("CreateDiv", "none")
+
+                document.getElementById("JoinedPlayer").innerHTML = lobbyOpponent + " Has joined your lobby!"
+
+
+            }
+
+            else{
+                console.log("nobody lol (get some friends)")
+            }
+            
+            
+
+        });
+    // [END listen_document]
+}
+
+function usedLobby(user){
+
+
+    var db = firebase.firestore();
+    
+    db.collection("lobby").doc(user).delete().then(() => {
+        console.log("Da lobby was deleted")
+        usedLobbyVar = false
+        console.log(usedLobbyVar)
+    }).catch((error) => {
+        alert("Error deleting user: ", error);
+    });
+
+}
+
+
+function startGame(){
+
+    var sex = 50
+    console.log(sex - sex *2)
+}
+
+
+function reload(){
+    location.reload()
 }
