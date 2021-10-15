@@ -874,7 +874,7 @@ var LobbyHost = document.getElementById("LobbyOpponentJoin").value
 
 
             test()
-            usedLobby(lobbyName)
+            //usedLobby(lobbyName)
     
         }
 
