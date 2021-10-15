@@ -726,21 +726,22 @@ var tempUser = ""
 
 function user2Join(){
     var db = firebase.firestore();
-    var lobbyName = document.getElementById("LobbyName").value
-    var lobbyUsername = document.getElementById("LobbyUsername").value
+    var lobbyName = document.getElementById("LobbyNameJoin").value
+   
     var LobbyOpponentJoin = document.getElementById("LobbyOpponentJoin").value
     user1Bet = document.getElementById("user1Bet").value
     console.log(lobbyOpponent + " " + lobbyPassword)
 
 
-
+    console.log(lobbyName)
+    console.log("Tempuser: "+tempUser)
 
         db.collection("lobby").doc(lobbyName).set({
     
             open: true,
             password: lobbyPassword,
-            total_bet: user1Bet,
-            user1: lobbyUsername,
+            total_bet: total_bet,
+            user1: tempUser,
             user2: LobbyOpponentJoin,
             winning_horse: 0,
             user1Bet: user1Bet,
@@ -750,14 +751,13 @@ function user2Join(){
        
         })
         .then(() => {
-            alert("New Lobby created with the following credentials: " + "\r\n" + "Lobby Name: " + lobbyName + "\r\n" + "Lobby Password: " + lobbyPassword + "\r\n" + "Please make sure to join the lobby again below");
 
-            Add_Funds(user1Bet - user1Bet *2)
+            
             
 
         })
         .catch((error) => {
-            alert("Error Saving Data: ", error);
+            alert("Error: ", error);
         });
     
 }
@@ -821,7 +821,7 @@ function getLobbyData(){
 
 
 
-
+                    user2Join()
                     lobbyUpdate()
                 }
             
